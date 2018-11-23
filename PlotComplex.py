@@ -6,15 +6,15 @@ scale = 30
 windowSize = 600
 # ===============
 
-size = int(windowSize/2)
+size = int(windowSize / 2)
 img = np.full((windowSize, windowSize, 3), 128, dtype=np.uint8)
 
 
 def w(x, y):
+    print("{}{:+}j".format(x, y))
+
     # y座標の向きが逆なので戻す
     y *= -1
-
-    print("{}{:+}j".format(x, y))
 
     x *= scale
     x = int(x)
