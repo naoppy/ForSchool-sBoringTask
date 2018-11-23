@@ -10,20 +10,20 @@ size = int(windowSize/2)
 img = np.full((windowSize, windowSize, 3), 128, dtype=np.uint8)
 
 
-def w(point):
+def w(x, y):
     # y座標の向きが逆なので戻す
-    point[1] *= -1
+    y *= -1
 
-    print("{}{:+}j".format(point[0], point[1]))
+    print("{}{:+}j".format(x, y))
 
-    point[0] *= scale
-    point[0] = int(point[0])
-    point[1] *= scale
-    point[1] = int(point[1])
+    x *= scale
+    x = int(x)
+    y *= scale
+    y = int(y)
 
-    point[0] += size
-    point[1] += size
-    point = tuple(point)
+    x += size
+    y += size
+    point = x, y
     cv2.arrowedLine(img, (size, size), point, (0, 0, 0), thickness=2)
 
 
@@ -32,11 +32,11 @@ cv2.line(img, (size, 0), (size, windowSize), (255, 0, 0), thickness=1)
 cv2.line(img, (0, size), (windowSize, size), (255, 0, 0), thickness=1)
 
 # ====plotData====
-w([2 / 5, -1 / 5])
-w([8, -4])
-w([4, 8])
-w([-2, -4])
-w([10, 0])
+w(2 / 5, -1 / 5)
+w(8, -4)
+w(4, 8)
+w(-2, -4)
+w(10, 0)
 # ================
 
 cv2.imwrite('opencv_draw_argument.png', img)
